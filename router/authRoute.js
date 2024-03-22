@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
 
     //create token
     const token = jwt.sign({ name: user.name }, process.env.JWT_SECRET, { expiresIn: '7d' })
-    res.cookie("token", token, { httpOnly: true, maxAge: 360000 })
+    // res.("token", token, { httpOnly: true, maxAge: 360000 })
     return res.json({ status: true, message: "Login successful", data: token })
 })
 
@@ -81,7 +81,7 @@ router.post('/forgot-password', async (req, res) => {
             from: process.env.EMAIL,
             to: email,
             subject: 'Reset Password',
-            text: `http://localhost:5173/resetpassword/${token}`,
+            text: `http://localhost:5174/resetpassword/${token}`,
             
         };
 
@@ -115,14 +115,15 @@ router.post('/reset-password/:token', async (req, res) => {
 
 //logout
 router.get('/logout', (req, res) => {
-    res.clearCookie("token")
+    //res.clearCookie("token")
 
     return res.json({ status: true, message: "Logout successful" })  
 })
 
 //login verification
-router.get('/verify', async (req, res) => {
-    const token = req.cookies.token
+router.post('/verify', async (req, res) => {
+    const token = req.body.token
+    console.log(token)
         if (!token) {
         return res.json({ status: false, message: "Unauthorized" })
     }

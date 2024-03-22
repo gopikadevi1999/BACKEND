@@ -11,10 +11,7 @@ const PaymentRoutes = require('./router/payment.js')
 
 const app = express();
 
-app.use(cors({
-    origin:['http://localhost:5174', 'http://localhost:5173'],
-    credentials: true
-}))
+app.use(cors())
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(cookieParser())
@@ -46,7 +43,7 @@ app.use('/images', express.static('upload/images'));
 app.post('/upload', upload.single('product'), (req, res) => {
     res.json({
         success:1,
-        image_url : `http://localhost:${process.env.PORT}/images/${req.file.filename}`
+        image_url : `https://rsr-backend.onrender.com/images/${req.file.filename}`
     })
 })
 
