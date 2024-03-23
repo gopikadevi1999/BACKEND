@@ -40,7 +40,7 @@ The RSR Backend is designed to handle the server-side logic of the RSR Crackers 
 ## Setup
 1. Clone the repository to your local machine:
     ```bash
-    git clone https://github.com/your-username/your-repository.git
+    git clone https://github.com/gopikadevi1999/BACKEND/tree/main
     ```
 2. Navigate to the project directory:
     ```bash
