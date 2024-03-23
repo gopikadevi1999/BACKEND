@@ -12,7 +12,7 @@ const PaymentRoutes = require('./router/payment.js')
 const app = express();
 
 app.use(cors({
-    origin:'https://rsr-kappa.vercel.app',
+    origin:['https://rsr-kappa.vercel.app', 'https://admin-24qe.vercel.app'],
     credentials: true
 }))
 app.use(express.urlencoded({ extended: true }));
